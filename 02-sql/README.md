@@ -3,7 +3,7 @@
 ## SQL - Postgres
 
 Como en todo en este mundo, hay muchas opciones de bases de datos SQL. De hecho las hay pagas y gratis. Podríamos usar: MySQL, ORACLE, IBM DB2, SQL server, access, etc.
-Todas utilizan el lenguaje SQL, asi que son muy parecidas, el 80% de las cosas se puede hacer con cualquier motor. Nosotros vamos a ver en nuestro ejemplo PostgreSQL, que es una motor gratis de código abierto que tiene una comunidad muy activa. De hecho, postgre logra sacar funcionalidades antes que los motores pagos!
+Todas utilizan el lenguaje SQL, asi que son muy parecidas, el 80% de las cosas se puede hacer con cualquier motor. Nosotros vamos a ver en nuestro ejemplo `PostgreSQL`, que es una motor gratis de código abierto que tiene una comunidad muy activa. De hecho, postgre logra sacar funcionalidades antes que los motores pagos!
 
 > :pineapple: Para instalar Postgre sigan las instrucciones para su sistema operativo [acá](https://www.postgresql.org/download/).
 
@@ -14,16 +14,15 @@ Usando SQL vamos a poder crear tablas, buscar datos, insertar filas, borrarlas, 
 
 ### Creando una BD y una tabla
 
-Lo primero que tenemos que hacer es crear una base de datos (la analogía con mongo es una colección). Para eso vamos a usar el Statement `Create database`.
+Lo primero que tenemos que hacer es crear una base de dato (Un motor de SQL puede manejar muchas Bases de Datos). Para eso vamos a usar el Statement `Create database`.
 
 ```sql
 CREATE DATABASE prueba;
 ```
-![psql](./img/psql.png)
 
 > Cada Statement SQL termina en ; (punto y coma). En algunas interfaces es obligatorio.
 
-Una vez ejecutado el comando vamos a ver listada la nueva base de datos, yo esoy usando la interfaz CLI de posgre, también pueden usar alguna interfaz gráfica.
+Una vez ejecutado el comando vamos a ver listada la nueva base de datos, yo estoy usando la interfaz CLI de postgre, también pueden usar alguna interfaz gráfica.
 
 Ahora vamos a crear una tabla. Usamos el statement `CREATE TABLE` que tiene la siguiente forma:
 
@@ -37,7 +36,7 @@ column_name3 data_type(size),
 );
 ```
 
-Es muy parecido a cómo definimos un schema en mongoose, no? Sí, es muy probable que mongoose se haya inspirado en esta forma de trabajar. Básicamente ponemos el nombre de la columna y luego el tipo de datos de esa columna. Podemos ver algunos tipos de datos comunes [aquí](http://www.techonthenet.com/postgresql/datatypes.php). También vamos a poder agregar [CONSTRAINS](http://www.tutorialspoint.com/postgresql/postgresql_constraints.htm) o restricciones por ejemplo:
+Básicamente ponemos el nombre de la columna y luego el tipo de datos de esa columna. Podemos ver algunos tipos de datos comunes [aquí](http://www.techonthenet.com/postgresql/datatypes.php). También vamos a poder agregar [CONSTRAINS](http://www.tutorialspoint.com/postgresql/postgresql_constraints.htm) o restricciones por ejemplo:
 
 ``` sql
 CREATE TABLE ciudades
@@ -89,10 +88,10 @@ INSERT INTO personas (nombre, apellido, ciudad)
 VALUES ('Toni', 'Tralice', 1);
 
 INSERT INTO personas (nombre, apellido, ciudad)
-VALUES ('Guille', 'Aszyn', 3);
+VALUES ('Emi', 'Chequer', 3);
 
 INSERT INTO personas (nombre, apellido, ciudad)
-VALUES ('Santi', 'Scanlan', 2);
+VALUES ('Fran', 'Etcheverri', 2);
 ```
 
 :smile:
@@ -118,8 +117,6 @@ y todas las ciudades:
 ```sql
 SELECT * FROM ciudades;
 ```
-
-![resultado](./img/tablas.png)
 
 > El asterisco quiere decir 'todas las columnas'.
 
@@ -180,10 +177,6 @@ JOIN ciudades
 
 Básicamente estamos diciendo: 'Seleccioná todas las columnas de la tabla personas y uní todas las filas con la tabla ciudades donde el id de ciudades sea igual al campo ciudad de personas.'.
 
-El resultado:
-
-![joindeTablas](./img/jointablas.png)
-
 Podemos reescribir la consulta de esta forma:
 
 ```sql
@@ -193,8 +186,6 @@ JOIN ciudades  c
 ```
 
 Ahora sólo pedimos el nombre, apellido de las personas y el nombre de la ciudad. Como `nombre` está en las dos tablas, tenemos que especificar de qué tabla es la columna. Para no escribir todo el nombre completo, podemos definir un ALIAS en la consulta, en esta caso a __personas__ le dimos el alias `p` y a __ciudades__ el alias `c`.
-
-![TablaconJoin2](./img/jointabla2.png)
 
 Según el tipo de union que queremos hacer vamos a usar alguno de estos tipos de `JOINS`:
 
