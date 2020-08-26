@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const vb = require('volleyball');
 const nunjucks = require('nunjucks');
-const { wiki, users, index } = require('./routes');
+const { pages, users, index, categories } = require('./routes');
 const app = express();
 
 const env = nunjucks.configure('views', {noCache: true});
@@ -16,8 +16,9 @@ app.use(express.static('./public'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json({extended: false}));
 app.use('/', index);
-app.use('/wiki', wiki);
+app.use('/pages', pages);
 app.use('/users', users);
+app.use('/categories', categories);
 app.use(function (err, req, res, next) {
     console.error(err);
     res.status(err.status || 500).send(err.message);

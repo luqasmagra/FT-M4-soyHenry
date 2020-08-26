@@ -9,16 +9,16 @@ const Page = db.define('page', {
 
 });
 
-//  .addHook() method
+// .addHook() method
 
 const User = db.define('users', {
 
-})
+});
 
 const Category = db.define('category', {
   // Tu código acá:
 
-})
+});
 
 // Vincular User con Page
 // Tu código acá:

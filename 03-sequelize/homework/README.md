@@ -77,9 +77,9 @@ Para llevar adelante esta tarea será necesario modificar el archivo `index.js` 
   })
   ```
 
-Dentro de `Page` y `User` deberán incluirse los campos correspondientes para cada uno identificando su tipo de dato. En este [link](https://sequelize.org/master/manual/model-basics.html#model-definition) podrán encontrar un ejemplo de cómo definir los esquemas. Por otro lado para saber todos los tipos de datos aceptados por Sequelize pueden ingresar [acá](https://sequelize.org/master/manual/model-basics.html#data-types)
+Dentro de `Page`, `User` y `Category` deberán incluirse los campos correspondientes para cada uno identificando su tipo de dato. En este [link](https://sequelize.org/master/manual/model-basics.html#model-definition) podrán encontrar un ejemplo de cómo definir los esquemas. Por otro lado para saber todos los tipos de datos aceptados por Sequelize pueden ingresar [acá](https://sequelize.org/master/manual/model-basics.html#data-types)
 
-*Los campos que contienen un asterísco deben ser obligatorios, por lo que será necesario la utilización de la opción `allowNull` en dichos casos*
+*Los campos que contienen un asterisco deben ser obligatorios, por lo que será necesario la utilización de la opción `allowNull` en dichos casos*
 
 ##### Atributo Route (Virtual)
 
@@ -112,7 +112,7 @@ Si llegaste acá y todavía no pensaste en el modelo de entidad-relación te spo
   <img src="./img/ER.jpeg" />
 </p>
 
-Luego de haber creado los campos para cada entidad de la base de datos tenemos que relacionarlos entre sí, ya que cada usuario (`User`) va a poder crear una o más páginas (`Page`). Por lo tanto dentro del mismo archivo `index.js` de la carpeta `models` también debemos agregar como se realcionan estas dos entidades.
+Luego de haber creado los campos para cada entidad de la base de datos tenemos que relacionarlos entre sí, ya que cada usuario (`User`) va a poder crear una o más páginas (`Page`) y cada página va a poder pertenecer a una o más categorías (`Category`). Por lo tanto dentro del mismo archivo `index.js` de la carpeta `models` también debemos agregar como se realcionan estas tres entidades.
 
 Las distintas opciones que ofrece Sequelize para ello son:
 
@@ -121,23 +121,27 @@ Las distintas opciones que ofrece Sequelize para ello son:
   * hasMany
   * belongsToMany
 
-Para más detalles sobre cada una de ellas pueden consultar el siguiente [link](https://sequelize.org/v3/api/associations/)
+Para más detalles sobre cada una de ellas pueden consultar el siguiente [link](https://sequelize.org/master/manual/assocs.html)
 
 En nuestro caso, las que corresponden utilizar son:
 
-  * Page.belongsTo: ya que cada página estará asociada a un usuario en particular
+  * Relación uno a muchos entre `User` y `Page`: deben utilizarse en conjunto 'hasMany' y 'belongsTo'
+  * Relación muchos a muchos entre `Page` y `Category`: deben utilizarse en conjunto dos 'belongsToMany'
 
-> User la opcion { as: 'author' }, para poder usar el método setAuthor.
+Opcional: Pueden utilizar alias para identificar las relaciones por ejemplo la relación entre un usuario y una página podría ser usando el alias `author`. En la sección ['Defining an Alias'](https://sequelize.org/master/manual/assocs.html#association-aliases--amp--custom-foreign-keys) de la documentación se muestra un ejemplo de utilización del mismo
+
 
 ### Routes
 
 Ahora necesitaremos modificar las rutas de Express para manejar los request tanto de creación como obtención de datos desde nuestro esquema:
 
-  * __GET /__: Obtiene todas las páginas creadas
-  * __GET /wiki/:urlTitle__ : Obtiene todos los datos de una página en particular cuyo urlTitle corresponda con el indicado
-  * __POST /wiki/__: Agrega una nueva página a la base de datos
-  * __GET /users/__: Obtiene todos los usuarios
-  * __GET /users/:id__ : Obtiene los datos del usuario cuyo id corresponda con el indicado
+  * __GET /__: Obtiene todas las páginas creadas (Debe traer también las categorías a las que pertenece cada página)
+  * __GET /pages/:urlTitle__ : Obtiene todos los datos de una página en particular cuyo urlTitle corresponda con el indicado
+  * __POST /pages__: Agrega una nueva página a la base de datos (Debe incluir también la categoría a la/s cual/es pertenece)
+  * __GET /users__: Obtiene todos los usuarios
+  * __GET /users/:id__: Obtiene los datos del usuario cuyo id corresponda con el indicado
+  * __GET /categories__: Obtiene el listado de todas las categorías existentes
+  * __GET /pages/:category__: Obtiene todas las páginas que estén dentro de la categoría pasada como parámetro (El `:category` debe ser el nombre de la categoría)
 
 *Los template de las rutas ya se encuentran creados dentro de la carpeta `routes` solo es necesario modificarlos donde se indica*
 
@@ -148,6 +152,8 @@ Para obtener datos de la base de datos creada por Sequelize debemos utilizar su 
   * [Consultas básicas](https://sequelize.org/master/manual/model-querying-basics.html)
   * [Consultas de búsqueda](https://sequelize.org/master/manual/model-querying-finders.html)
 
+__IMPORTANTE:__ Recordar que las consultas u operaciones sobre la base de datos serán a través de promesas por lo que pueden capturar sus respuestas o errores como ya vimos en clases anteriores.
+
 #### GET /
 
 Modificar el archivo `index.js` de la carpeta `routes` y utilizar el método `findAll` de Sequelize para obtener todas las páginas creadas hasta el momento. Luego con la respuesta renderizar el `index` pasándole como argumento la respuesta de la consulta realizada.
@@ -156,13 +162,15 @@ Modificar el archivo `index.js` de la carpeta `routes` y utilizar el método `fi
 router.get('/', function(req, res){
   // Modificar para renderizar todas las páginas creadas que se encuentren
   // dento de la base de datos
+  // (Debe traer también las categorías a las que pertenece cada página)
   // Tu código acá:
 
-  // 1. Utilizar Page.findAll()
+  // 1. Utilizar Page.findAll() en conjunto con el 'include' para hacer Eager Loading y traer
+  //    también los datos de las categorías de cada página (Para más información acceder acá:
+  //    https://sequelize.org/master/manual/eager-loading.html)
   // 2. Capturar la respuesta con lo ya visto en Express (Utilizar then())
-  // 3. Renderizar la página "index" usando res.render('index', {pages}) (Donde {pages} es la respuesta del request)
+  // 3. Renderizar la página "index" usando res.render('index', {pages}) (Donde {pages} es la respuesta de la consulta a la base de datos)
 
-  res.render('index');
 })
 ```
 

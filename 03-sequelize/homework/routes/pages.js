@@ -5,9 +5,10 @@ const { Page, User } = require('../models');
 router.post('/', function(req, res, next) {
   // Modificar para que cuando se clickee el botón de "SUBMIT" se cree un nuevo post
   // tomando los datos desde el form y agregándolo a la base de datos
+  // (Debe incluir también la categoría a la/s cual/es pertenece)
   // Tu código acá:
 
-  
+
 });
 
 router.get('/add', function(req, res) {
@@ -18,7 +19,14 @@ router.get('/:urlTitle', function(req, res, next) {
   // Modificar para que cuando se seleccione un "Page" en particular se muestren
   // los datos asociados al mismo
   // Tu código acá:
- 
+
+});
+
+router.get('/:category', function(req, res, next) {
+  // Modificar para que cuando se seleccione una "Category" en particular se muestren
+  // todas las páginas que estén dentro de dicha categoría
+  // Tu código acá:
+
 });
 
 module.exports = router;
