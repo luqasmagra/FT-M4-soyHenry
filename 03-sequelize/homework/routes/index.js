@@ -10,6 +10,7 @@ router.get('/', function(req, res, next){
 
 module.exports = {
   users: require('./users'),
-  wiki: require('./pages'),
+  pages: require('./pages'),
+  categories: require('./categories'),
   index: router,
 };

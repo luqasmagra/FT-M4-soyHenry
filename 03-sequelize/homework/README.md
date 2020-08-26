@@ -174,9 +174,9 @@ router.get('/', function(req, res){
 })
 ```
 
-#### GET /wiki/:urlTitle
+#### GET /pages/:urlTitle
 
-Modificar el archivo `wiki.js` de la carpeta `routes` y utilizar el método `findOne` de Sequelize para obtener una página en particular (La que coincida con el urlTitle indicado). Luego con la respuesta renderizar el `wikipage` pasándole como argumento la respuesta de la consulta realizada.
+Modificar el archivo `pages.js` de la carpeta `routes` y utilizar el método `findOne` de Sequelize para obtener una página en particular (La que coincida con el urlTitle indicado). Luego con la respuesta renderizar el template `page` pasándole como argumento la respuesta de la consulta realizada.
 
 ```js
 router.get('/:urlTitle', function(req, res) {
@@ -186,15 +186,15 @@ router.get('/:urlTitle', function(req, res) {
 
   // 1. Utilizar Page.findOne() pasándole como parámetro el urlTitle
   // 2. Capturar la respuesta utilizando then()
-  // 3. Renderizar la página "wikipage" usando res.render('wikipage', {page}) (Donde {page} es la respuesta del request)
+  // 3. Renderizar la página "page" usando res.render('page', {page}) (Donde {page} es la respuesta de la consulta a la base de datos)
 
-  res.render('wikipage');
+
 })
 ```
 
-#### POST /wiki/
+#### POST /pages/
 
-Modificar el archivo `wiki.js` de la carpeta `routes` y utilizar el método `create` de Sequelize para crear y gurdar un nuevo registro dentro de la tabla de páginas. Una vez creada exitosamente redirigir hacia la pantalla de la página recientemente creada.
+Modificar el archivo `pages.js` de la carpeta `routes` y utilizar el método `create` de Sequelize para crear y gurdar un nuevo registro dentro de la tabla de páginas. Una vez creada exitosamente redirigir hacia la pantalla de la página recientemente creada.
 
 ```js
 router.post('/', function(req, res, next) {
@@ -205,9 +205,9 @@ router.post('/', function(req, res, next) {
   // 1. Utilizar el método findOrCreate para obtener el usuario o crear uno nuevo en el caso de que no exista
   // 2. Capturar la respuesta del punto 1 con then() y a partir de ella y de los datos almacenados en `req`
   //    crear una nueva página utilizando el método `create`
-  // 3. Con los datos del usuario y la página, asociar el Autor (usuario) a la página: createdPage.setAuthor(user.dataValues.id);
-  // 4. Capturar la respuesta del punto 2 con then() y redirigir hacía la pantalla cuyo URL obtendremos de 'page.urlTitle'
-  res.render('index');
+  // 3. Con los datos del usuario y la página, asociar el Autor (usuario) a la página: createdPage.setUser(user.dataValues.id);
+  // 4. Capturar la respuesta con then() y redirigir hacía la pantalla cuyo URL obtendremos de 'page.urlTitle'
+
 });
 ```
 
@@ -223,29 +223,24 @@ router.get('/', function(req, res, next){
 
   // 1. Utilizar User.findAll()
   // 2. Capturar la respuesta con then()
-  // 3. Renderizar la página "users" usando res.render('users', {users}) (Donde {users} es la respuesta del request)
+  // 3. Renderizar la página "users" usando res.render('users', {users}) (Donde {users} es la respuesta de la consulta a la base de datos)
 
-  res.render('users');
 });
 ```
 
 #### GET /users/:id
 
-Modificar el archivo `users.js` de la carpeta `routes` y utilizar el método `findById` de Sequelize para obtener un usuario en particular (El que coincida con el ID indicado). Luego con la respuesta renderizar el `unUsuarioEnParticular` pasándole como argumento la respuesta de la consulta realizada.
+Modificar el archivo `users.js` de la carpeta `routes` y utilizar el método `findByPk` de Sequelize para obtener un usuario en particular (El que coincida con el ID indicado). Luego con la respuesta renderizar el template `unUsuarioEnParticular` pasándole como argumento la respuesta de la consulta realizada.
 
 ```js
 router.get('/:id', function(req, res){
   // Modificar para renderizar los datos del usuario seleccionado
   // Tu código acá:
 
-  // 1. Utilizar User.findById() pasándole como parámetro el id
-  // 2. Buscar todas las páginas de ese usuario usando Page.findAll
-  // 2. Cuando las dos promesas estén completas (tip: Promise.all) agregar las paginas a user.pages:
-  // var pages = values[0];
-  // var user = values[1];
-  // user.pages = pages;
-  // 3. Renderizar la página "unUsuarioEnParticular" usando res.render('unUsuarioEnParticular', {user}) (Donde {user} es la respuesta del request)
+  // 1. Utilizar User.findByPk() pasándole como parámetro el id
+  // 2. Agregarle todas las páginas de dicho usuario utilizando 'Eager Loading' (include) para
+  // incluir el modelo de 'Page'
+  // 3. Renderizar la página "unUsuarioEnParticular" usando res.render('unUsuarioEnParticular', {user}) (Donde {user} es la respuesta de la consulta a la base de datos)
 
-  res.render('unUsuarioEnParticular');
 });
 ```
