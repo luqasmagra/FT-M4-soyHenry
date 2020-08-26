@@ -30,7 +30,7 @@ Dentro del modelo de la base de datos que vamos a utilizar en este ejercicio deb
 
 #### Diagrama Entidad-Relación
 
-Antes de comenzar a codear tomate un tiempo para pensar como deberían ser las relaciones entre estas tres entidades que debemos definir para el blog.
+Antes de comenzar a codear tomate un tiempo para pensar como deberían ser las relaciones entre estas tres entidades que debemos definir para el blog considerando que una página puede pertenecer a más de una categoría.
 
 #### Page
 
@@ -49,6 +49,13 @@ La entidad `User` va a correponder a aquellos usuarios que participen del Blog g
   * __name__*: Nombre completo del usuario
   * __email__*: Email del usuario (Debe ser único)
 
+#### Category
+
+La entidad `Category` corresponde a las distintas categorías o temas a los que puede pertenecer una paǵina, por lo que minimamente debería contener:
+
+  * __name__*: Nombre de la categoría (Debe ser único)
+  * __description__: Descripción de la categoría
+
 ##### Esquema
 
 Para llevar adelante esta tarea será necesario modificar el archivo `index.js` de la carpeta `models`:
@@ -60,6 +67,11 @@ Para llevar adelante esta tarea será necesario modificar el archivo `index.js` 
   });
 
   const User = db.define('users', {
+    // Tu código acá:
+
+  })
+
+  const Category = db.define('category', {
     // Tu código acá:
 
   })

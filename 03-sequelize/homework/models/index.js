@@ -15,6 +15,11 @@ const User = db.define('users', {
 
 })
 
+const Category = db.define('category', {
+  // Tu código acá:
+
+})
+
 // Vincular User con Page
 // Tu código acá:
 
@@ -22,5 +27,6 @@ const User = db.define('users', {
 module.exports = {
   User,
   Page,
+  Category,
   db
 }
