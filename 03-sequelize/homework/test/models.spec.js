@@ -1,4 +1,4 @@
-const { Page, User } = require('../models');
+const { Page, User, Category } = require('../models');
 const expect = require('chai').expect;
 
 describe('Page model', function () {
@@ -40,8 +40,8 @@ describe('Page model', function () {
       });
     })
     describe('route', function () {
-      it('devuelve el url_name anexado a "/wiki/"', function (){
-        expect(page.route).to.equal('/wiki/'+page.urlTitle);
+      it('devuelve el url_name anexado a "/pages/"', function (){
+        expect(page.route).to.equal('/pages/'+page.urlTitle);
       });
     });
   });
@@ -78,11 +78,26 @@ describe('User Model', function () {
       .then(() => done('No deberia haberse creado'))
       .catch(() => done());
     });
-    it('con un email inválido', function(done) {
+    it('error con un email inválido', function(done) {
       User.create({
         nombre: 'hola',
         email: 'esto no es un email valido'
       })
+        .then(() => done('No debería haberse creado'))
+        .catch(() => done());
+    });
+  });
+});
+
+describe('Category model', function () {
+  beforeEach(function() {
+    return Category.sync({ force: true });
+  })
+  describe('Validations', function () {
+    it('error sin name', function(done) {
+       Category.create({
+        description: 'Hola',
+       })
         .then(() => done('No debería haberse creado'))
         .catch(() => done());
     });
