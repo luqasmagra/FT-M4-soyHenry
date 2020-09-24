@@ -267,7 +267,8 @@ Para eso vamos a definir dos middleware propios:
     // Si NO hay un usuario logueado redirigir a /login de lo contrario llamar a next()
   }
   ```
- * __isNotAuthenticated:__
+
+  * __isNotAuthenticated:__
  ```js
  const isNotAuthenticated = (req, res, next) => {
    // Si hay un usuario logueado redirigir a /home de lo contrario llamar a next()
