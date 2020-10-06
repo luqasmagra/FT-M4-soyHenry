@@ -25,7 +25,7 @@ mantendrá un registro de todos aquellos usuarios que hayan creado alguna págin
   Es necesario cambiar donde dice `usuario` por el usuario con el cual crearon la base de datos y
   donde dice `password` con la contraseña de dicho usuario.
 
-3. Ejecutar `npm start` para correr el servidor. Inicialmente al acceder a `http://localhost:1337/`
+3. Ejecutar `npm start` para correr el servidor. Inicialmente al acceder a `http://localhost:3001/`
 para visualizar el Blog no se verá nada ya que las rutas del servidor no se encuentran implementadas.
 
 ## Instrucciones
@@ -198,7 +198,7 @@ obtención de datos desde nuestro esquema:
   * __GET /users__: Obtiene todos los usuarios
   * __GET /users/:id__: Obtiene los datos del usuario cuyo id corresponda con el indicado
   * __GET /categories__: Obtiene el listado de todas las categorías existentes
-  * __GET /pages/:category__: Obtiene todas las páginas que estén dentro de la categoría pasada como
+  * __GET /categories/:category__: Obtiene todas las páginas que estén dentro de la categoría pasada como
   parámetro (El `:category` debe ser el nombre de la categoría)
 
 *Los template de las rutas ya se encuentran creados dentro de la carpeta `routes` solo es necesario
