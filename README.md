@@ -7,8 +7,8 @@
 - [DBMS](./01-dbms)
 - [SQL](./02-sql)
 - [ORM: Sequelize](./03-sequelize)
-- [Mongo](./04-mongo)
+- [Authentication](./04-Authentication)
 
 - Checkpoint
 
->> El **Checkpoint** consiste en un ejercicio que integra todo este contenido, va a ser individual y van a tener un día completo para terminarlo. Para continuar con la carrera es necesario aprobar este Checkpoint.
+> El **Checkpoint** consiste en un ejercicio que integra todo este contenido, va a ser individual y van a tener un día completo para terminarlo. Para continuar con la carrera es necesario aprobar este Checkpoint.
