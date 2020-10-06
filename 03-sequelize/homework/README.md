@@ -198,7 +198,7 @@ obtención de datos desde nuestro esquema:
   * __GET /users__: Obtiene todos los usuarios
   * __GET /users/:id__: Obtiene los datos del usuario cuyo id corresponda con el indicado
   * __GET /categories__: Obtiene el listado de todas las categorías existentes
-  * __GET /categories/:category__: Obtiene todas las páginas que estén dentro de la categoría pasada como
+  * __GET /categories/:idCategory__: Obtiene todas las páginas que estén dentro de la categoría pasada como
   parámetro (El `:category` debe ser el nombre de la categoría)
 
 *Los template de las rutas ya se encuentran creados dentro de la carpeta `routes` solo es necesario
@@ -259,7 +259,7 @@ router.get('/:urlTitle', function(req, res) {
 })
 ```
 
-#### POST /pages/
+#### POST /pages
 
 Modificar el archivo `pages.js` de la carpeta `routes` y utilizar el método `findOrCreate` de
 Sequelize para buscar un usuario existente o crearlo en el caso de que no exista, luego el método
@@ -270,7 +270,7 @@ automáticamente Sequelize en los casos de relaciones muchos a muchos `setCatego
 exitosamente redirigir hacia la pantalla de la página recientemente creada.
 
 ```js
-router.post('/', function(req, res, next) {
+router.post('/', function(req, res) {
   // Modificar para que cuando se clickee el botón de "SUBMIT" se cree un nuevo post
   // tomando los datos desde el form y agregándolo a la base de datos
   // Tu código acá:
@@ -303,14 +303,14 @@ alguno de los datos no llegue podemos renderizar el template `error` pasándole 
 
 ```
 
-#### GET /users/
+#### GET /users
 
 Modificar el archivo `users.js` de la carpeta `routes` y utilizar el método `findAll` de Sequelize
 para obtener todos los usuarios creados hasta el momento. Luego con la respuesta renderizar el `users`
 pasándole como argumento la respuesta de la consulta realizada.
 
 ```js
-router.get('/', function(req, res, next){
+router.get('/', function(req, res) {
   // Modificar para renderizar todas los usuarios que se encuentren
   // dento de la base de datos
   // Tu código acá:
@@ -331,7 +331,7 @@ renderizar el template `unUsuarioEnParticular` pasándole como argumento la resp
 realizada.
 
 ```js
-router.get('/:id', function(req, res){
+router.get('/:id', function(req, res) {
   // Modificar para renderizar los datos del usuario seleccionado
   // Tu código acá:
 
@@ -343,3 +343,49 @@ router.get('/:id', function(req, res){
 
 });
 ```
+
+#### GET /categories
+
+Modificar el archivo `categories.js` de la carpeta `routes` y utilizar el método `findAll` de Sequelize
+para obtener todas las categorías existentes.
+
+```js
+router.get('/', function(req, res) {
+  // Modificar para devolver los datos de todas las categorias existentes
+  // Tu código acá:
+
+  // 1. Utilizar Category.findAll()
+  // 2. Capturar la respuesta con lo ya visto en Express (Utilizar then())
+  // 3. Devolver los datos obtenidos en el paso anterior usando res.json
+
+});
+```
+
+#### GET /categories/:idCategory
+
+Modificar el archivo `categories.js` de la carpeta `routes` y utilizar el método `findByPk` de
+Sequelize para obtener todas las pagínas asociadas a la categoría indicada como idCategory.
+
+```js
+router.get('/:idCategory', function(req, res) {
+  // Modificar para que cuando se seleccione una "Category" en particular se muestren
+  // todas las páginas que estén dentro de dicha categoría
+  // Tu código acá:
+
+  // 1. Utilizar Category.findByPk() pasándole como parámetro el id de la categoría
+  //    en conjunto con el 'include' para hacer Eager Loading y traer
+  //    también los datos de las paǵinas de esa categoría (Para más información acceder acá:
+  //    https://sequelize.org/master/manual/eager-loading.html)
+  // 2. Capturar la respuesta con lo ya visto en Express (Utilizar then())
+  // 3. Devolver los datos res.json
+
+});
+```
+
+### Extra
+
+Se habrán dado cuenta que las últimas dos rutas correspondientes a las categorías no están siendo
+utilizadas por ningún template HTML para mostrarlos en nuestra app por lo que los invitamos a crear
+nuevas vistas y/o modificar las existentes para incluir una sección donde podamos ver el listado
+de todas las categorías existentes y al clickear en alguna de ellas que nos muestre todas las
+páginas que existen para dicha categoría.
