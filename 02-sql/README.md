@@ -1,5 +1,21 @@
 # Henry
 
+<table width="100%" style='table-layout:fixed;'>
+  <tr>
+	  <td>
+	  	<a href="https://airtable.com/shrOlYwXwdTEsT4Cq?prefill_clase=02-sql">
+			<img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
+			<br>
+			Hacé click acá para dejar tu feedback sobre esta clase.
+	  	</a>
+	  </td>
+    <td>
+		</td>
+  </tr>
+</table>
+
+# Henry
+
 ## SQL - Postgres
 
 Como en todo en este mundo, hay muchas opciones de bases de datos SQL. De hecho las hay pagas y gratis. Podríamos usar: MySQL, ORACLE, IBM DB2, SQL server, access, etc.

@@ -1,3 +1,19 @@
+# Henry
+
+<table width="100%" style='table-layout:fixed;'>
+  <tr>
+	  <td>
+	  	<a href="https://airtable.com/shrOlYwXwdTEsT4Cq?prefill_clase=06-Testing">
+			<img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
+			<br>
+			Hacé click acá para dejar tu feedback sobre esta clase.
+	  	</a>
+	  </td>
+    <td>
+		</td>
+  </tr>
+</table>
+
 ## ORM
 
 Un problema con las bases de datos relacionales ( puede ser un gran problema en proyectos complejos ) es que las cosas que guardamos en ella no mapean uno a uno a los objetos que tenemos en nuestra aplicación. De hecho, es probable que en nuestra App tengamos la clase _persona_, pero dificilmente tengamos la clase _ciudad_ y que ambas estén relacionadas. Simplemente tendríamos una propiedad _ciudad_ dentro de _persona_.
