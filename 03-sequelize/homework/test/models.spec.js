@@ -32,13 +32,13 @@ describe('Page model', function () {
   });
   describe('Virtuals', function () {
     let page;
-    before(function(){
+    // before(function(){
       page = Page.build({
         title: 'hola',
         content: 'hola **chau**',
         urlTitle: 'hola',
       });
-    })
+    // })
     describe('route', function () {
       it('devuelve el url_name anexado a "/pages/"', function (){
         expect(page.route).to.equal('/pages/'+page.urlTitle);

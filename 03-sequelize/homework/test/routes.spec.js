@@ -6,7 +6,7 @@ const expect = require('chai').expect;
 const agent = supertest(app);
 
 describe('pedidos http PAGES', function () {
-  before(function(){
+  // before(function(){
     var catAutos =  Category.create({
       name: "Autos",
       description: "Categoria que habla sobre autos"
@@ -26,7 +26,7 @@ describe('pedidos http PAGES', function () {
       .then(res => {
         return "Categorías precargadas";
       })
-  })
+  // })
   beforeEach(function(){
     return Page.sync({ force: true })
   })
