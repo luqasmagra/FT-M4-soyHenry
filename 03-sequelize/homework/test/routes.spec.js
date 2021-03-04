@@ -35,6 +35,10 @@ describe('pedidos http PAGES', function () {
       return agent.get('/')
       .expect(200);
     });
+    it('espera que sea html', function(){
+      return agent.get('/')
+        .expect('Content-Type', /html/);
+    });
   });
 
   describe('GET /pages/add', function () {
@@ -62,6 +66,10 @@ describe('pedidos http PAGES', function () {
         return agent.get('/pages/hola')
           .expect(200);
       })
+    });
+    it('espera que sea html', function(){
+      return agent.get('/pages/hola')
+        .expect('Content-Type', /html/);
     });
   });
 
@@ -130,12 +138,6 @@ describe('pedidos http USER', function () {
   beforeEach(function(){
     return User.sync({ force: true })
   })
-  describe('GET /users', function () {
-    it('responde con 200', function() {
-      return agent.get('/users')
-      .expect(200);
-    });
-  });
 
   describe('GET /users', function () {
     it('responde con 200', function() {
@@ -147,6 +149,10 @@ describe('pedidos http USER', function () {
         return agent.get('/users')
           .expect(200);
       })
+    });
+    it('espera que sea html', function(){
+      return agent.get('/users')
+        .expect('Content-Type', /html/);
     });
   });
 
@@ -161,6 +167,60 @@ describe('pedidos http USER', function () {
           .expect(200);
       })
     });
+    it('espera que sea html', function(){
+      return agent.get('/users')
+        .expect('Content-Type', /html/);
+    });
   });
 
 });
+
+describe('pedidos HTTP categories', function () {
+  beforeEach(function(){
+    return Category.sync({ force: true })
+  })
+
+  describe('GET /categories', function () {
+    it('responde con 200', function() {
+      return agent.get('/categories')
+      .expect(200);
+    });
+    it('responde con un json con todas las categorias.', function() {
+      return Category.create({
+        name: "Autos",
+        description: "Categoria que habla sobre autos"
+      })
+      .then(() => {
+        return Category.create({
+          name: "Deportes",
+          description: "Categoria que habla sobre Deportes"
+        })
+      })
+      .then(() => {
+        return agent.get('/categories')
+      })
+      .then(categories => {
+        expect(categories.body[0].name).to.equal('Autos');
+        expect(categories.body[0].description).to.equal('Categoria que habla sobre autos');
+        expect(categories.body[1].name).to.equal('Deportes');
+        expect(categories.body[1].description).to.equal('Categoria que habla sobre Deportes');
+      })
+    });
+  });
+  describe('get /categories/:idCategory', function () {
+    it('responde con 404 cuando la categoria no existe', function() {
+      return agent.get('/categories/99')
+        .expect(404);
+    });
+    it('responde con 200 cuando la página existe', function() {
+      return Category.create({
+        name: "Autos",
+        description: "Categoria que habla sobre autos"
+      })
+      .then(() => {
+        return agent.get('/categories/1')
+          .expect(200);
+      })
+    });
+  })
+})
