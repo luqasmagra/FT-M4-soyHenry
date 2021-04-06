@@ -198,7 +198,7 @@ app.get('/home', (req, res) => {
 Debemos también agregar funcionalidad al post de /register para poder crear nuevos usuarios:
 
 ```js
-app.post('/register', redirectHome, (req, res) => {
+app.post('/register', (req, res) => {
   // 1) Obtener el name, email y password desde el body del request
   // 2) Verificar que los tres datos hayan sido provistos
   // Si todos los datos fueron provistos:
@@ -263,7 +263,7 @@ Para eso vamos a definir dos middleware propios:
 
   * __isAuthenticated:__
   ```js
-  const isuthenticated = (req, res, next) => {
+  const isAuthenticated = (req, res, next) => {
     // Si NO hay un usuario logueado redirigir a /login de lo contrario llamar a next()
   }
   ```
