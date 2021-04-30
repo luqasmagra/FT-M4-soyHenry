@@ -1,30 +1,29 @@
 {
-  "name": "henryblog",
+  "name": "03-sequelize",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "nodemon -e html,js,css app.js",
-    "test": "jest --detectOpenHandles --forceExit",
-    "grade": "jest --useStderr --detectOpenHandles --forceExit --json --outputFile=./test/result.json"
+    "test": "jest --detectOpenHandles",
+    "grade": "jest --useStderr --detectOpenHandles --json --outputFile=./test/result.json"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "jest": "^26.5.3",
+    "jest": "^26.6.3",
     "node-fetch": "^2.6.1",
-    "nodemon": "^2.0.4",
-    "nunjucks": "^3.2.2",
-    "pg": "^8.3.2",
+    "nodemon": "^2.0.7",
+    "nunjucks": "^3.2.3",
+    "pg": "^8.6.0",
     "pg-hstore": "^2.3.3",
     "prompt-sync": "^4.2.0",
-    "sequelize": "^6.3.4",
+    "sequelize": "^6.6.2",
     "volleyball": "^1.5.1"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "supertest": "^4.0.2"
+    "chai": "^4.3.4",
+    "supertest": "^6.1.3"
   }
 }
