@@ -4,8 +4,8 @@
   "description": "",
   "scripts": {
     "start": "nodemon -e html,js,css app.js",
-    "test": "jest --detectOpenHandles --forceExit",
-    "grade": "jest --useStderr --detectOpenHandles --forceExit --json --outputFile=./test/result.json"
+    "test": "jest --detectOpenHandles",
+    "grade": "jest --useStderr --detectOpenHandles --json --outputFile=./test/result.json"
   },
   "author": "",
   "license": "ISC",
