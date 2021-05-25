@@ -1,6 +1,5 @@
 const express = require('express');
 const cookieparser = require('cookie-parser');
-const bodyparser = require('body-parser');
 const session = require('express-session');
 const morgan = require('morgan');
 
@@ -12,7 +11,7 @@ const users = [
 ]
 
 app.use(morgan('dev'));
-app.use(bodyparser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 // El orden es importante, el cookieparser debe estar antes de la utilización del session
 app.use(cookieparser());

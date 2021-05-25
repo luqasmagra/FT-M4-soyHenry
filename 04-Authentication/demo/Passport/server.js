@@ -64,7 +64,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.use(require('morgan')('dev'));
-app.use(require('body-parser').urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(require('express-session')({
   secret: 'secret',
   resave: false,
