@@ -147,34 +147,29 @@ app.get('/login',  (req, res) => {
 
 ### POST /login
 
-¿No era de autenticación la homework? ¡Ahora si! Implementemos el POST para procesar los datos enviados por el formulario de login que recién definimos. Si observan al incluir el `method='post action='/login` dentro de dicho formulario, al hacer click en el botón de `Ingresar` se va a disparar un request del tipo POST a `/login`. Para poder parsear la información recibida necesitamos utilizar el middleware `body-parser`
+¿No era de autenticación la homework? ¡Ahora si! Implementemos el POST para procesar los datos enviados por el formulario de login que recién definimos. Si observan al incluir el `method='post action='/login` dentro de dicho formulario, al hacer click en el botón de `Ingresar` se va a disparar un request del tipo POST a `/login`. Para poder parsear la información recibida necesitamos utilizar como middleware el método nativo de express `express.urlencoded()`
 
-  1. Instalar el middleware:
-  ```bash
-  npm install --save body-parser
-  ```
-  2. Importar el middleware:
-  ```js
-  const bodyparser = require('body-parser');
-  ```
-  3. Aplicar el middleware a todos los request configurando en particular para este caso (URL-encoded requests):
-  ```js
-  app.use(bodyparser.urlencoded({ extended: true }));
-  ```
-  4. Completar el POST a /login:
-  ```js
-  app.post('/login', (req, res) => {
-    // 1) Obtener el email y password desde el body del request
-    // 2) Verificar que ambos datos hayan sido provistos
-    // Si ambos datos fueron provistos:
-    //   a) Obtener del listado de usuarios (si existe) el que tenga dicho email y contraseña
-    //   b) Guardar los datos del usuario en la cookie: res.cookie('userId', user.id) donde el primer
-    //   parámetro es el nombre de la cookie y el segundo su valor
-    //   c) Redirigir a /home
-    // En el caso de que no exista un usuario con esos datos o directamente no se hayan provisto o
-    // el email o la password, redirigir a /login
-  });
-  ```
+1. Aplicar el middleware a todos los request configurando en particular para este caso (URL-encoded requests):
+
+```js
+app.use(express.urlencoded({ extended: true }));
+```
+
+4. Completar el POST a /login:
+
+```js
+app.post('/login', (req, res) => {
+  // 1) Obtener el email y password desde el body del request
+  // 2) Verificar que ambos datos hayan sido provistos
+  // Si ambos datos fueron provistos:
+  //   a) Obtener del listado de usuarios (si existe) el que tenga dicho email y contraseña
+  //   b) Guardar los datos del usuario en la cookie: res.cookie('userId', user.id) donde el primer
+  //   parámetro es el nombre de la cookie y el segundo su valor
+  //   c) Redirigir a /home
+  // En el caso de que no exista un usuario con esos datos o directamente no se hayan provisto o
+  // el email o la password, redirigir a /login
+});
+```
 
 ### Pantalla de Home: GET /home
 
@@ -185,7 +180,7 @@ app.get('/home', (req, res) => {
   const user = //Completar: obtener el usuario correspondiente del array 'users' tomando como
               //            referencia el id de usuario almacenado en la cookie
 
-  res.send(`
+    res.send(`
     <h1>Bienvenido ${user.name}</h1>
     <h4>${user.email}</h4>
     <a href='/'>Inicio</a>

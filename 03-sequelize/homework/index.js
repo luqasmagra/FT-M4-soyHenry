@@ -1,5 +1,4 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const vb = require('volleyball');
 const nunjucks = require('nunjucks');
 const { pages, users, index, categories } = require('./routes');
@@ -13,8 +12,8 @@ app.engine('html', nunjucks.render);
 app.use(vb);
 app.use(express.static('./public'));
 
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json({extended: false}));
+app.use(express.urlencoded({extended: false}));
+app.use(express.json({extended: false}));
 app.use('/', index);
 app.use('/pages', pages);
 app.use('/users', users);
