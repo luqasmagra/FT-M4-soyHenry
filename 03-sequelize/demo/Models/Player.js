@@ -19,6 +19,9 @@ module.exports = sequelize => {
     },
     status: {
       type: DataTypes.ENUM('active', 'injured', 'retired')
+    },
+    skill: {
+      type: DataTypes.INTEGER
     }
   }, {
     // timestamps: false

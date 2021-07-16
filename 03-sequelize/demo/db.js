@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { Sequelize, Op, DataTypes } = require('sequelize');
 const modelPlayer = require('./Models/Player.js');
 const modelTeam = require('./Models/Team.js');
 
@@ -13,5 +13,6 @@ modelTeam(sequelize);
 
 module.exports = {
   ...sequelize.models,
-  db: sequelize
+  db: sequelize,
+  Op
 }
