@@ -107,6 +107,30 @@ server.get('/players/group', async (req, res) => {
   res.json(stats.length ? stats : 'No players found');
 });
 
+server.get('/players/utility/count', async (req, res) => {
+  const { attribute, value, gt } = req.query;
+  const condition = gt === 'true' ? { [Op.gt]: value } : { [Op.lt]: value }
+  const count = await Player.count({
+    where: {
+      [attribute]: condition
+    }
+  });
+  res.json(count);
+});
+
+server.get('/players/utility/maxormin', async (req, res) => {
+  const { attribute, max } = req.query;
+  if(max === 'true') {
+    return res.json(await Player.max(attribute));
+  }
+  res.json(await Player.min(attribute));
+});
+
+server.get('/players/utility/sum', async (req, res) => {
+  const { attribute } = req.query;
+  res.json(await Player.sum(attribute));
+});
+
 server.get('/players/:username', async (req, res) => {
   const { username } = req.params;
   const player = await Player.findOne({
