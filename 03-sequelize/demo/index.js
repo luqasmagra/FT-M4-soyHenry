@@ -33,6 +33,11 @@ server.get('/players', async (req, res) => {
   res.json(players.length ? players : 'No players found');
 });
 
+server.get('/players/pagination', async (req, res) => {
+  const players = await Player.findAll(req.query);
+  res.json(players.length ? players : 'No players found');
+});
+
 server.get('/players/attributes', async (req, res) => {
   const { attributes } = req.body;
   const players = await Player.findAll({
