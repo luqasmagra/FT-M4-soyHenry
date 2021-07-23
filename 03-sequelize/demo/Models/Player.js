@@ -11,7 +11,10 @@ module.exports = sequelize => {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true
+      unique: true,
+      set(value) {
+        this.setDataValue('username', value.toUpperCase());
+      }
     },
     birthday: {
       type: DataTypes.DATEONLY,
@@ -25,6 +28,30 @@ module.exports = sequelize => {
       get() {
         // return this.skill + ' points'; // Wrong!
         return this.getDataValue('skill') + ' points';
+      },
+      validate: {
+        min: 0,
+        max: 100,
+        isEven(value) {
+          if(value % 2 !== 0) {
+            throw new Error('Only even values are allowed!')
+          }
+        }
+      }
+    },
+    // password: {
+    //   type: DataTypes.STRING,
+    //   set() {
+    //     this.setDataValue('password', (this.firstName + this.lastName).split('').sort(() => 0.5 - Math.random()).join(''));
+    //   }
+    // },
+    fullName: {
+      type: DataTypes.VIRTUAL,
+      get() {
+        return `${this.firstName} ${this.lastName}`;
+      },
+      set() {
+        throw new Error('Do not try to set the `fullName` value!');
       }
     }
   }, {

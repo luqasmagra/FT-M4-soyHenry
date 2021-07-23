@@ -27,7 +27,10 @@ server.get('/players', async (req, res) => {
   const condition = name 
     ? {where: {firstName: name}}
     : {}
-  const players = await Player.findAll(condition);
+  condition.attributes = { exclude: ['actualizado']}
+  const players = await Player.findAll(
+    condition,
+  );
   // console.log(players);
   // console.log(players.map(p => p.toJSON()));
   res.json(players.length ? players : 'No players found');
