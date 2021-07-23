@@ -1,142 +1,128 @@
 [
   {
-      "skill": "97 points",
-      "fullName": "Lionel Messi",
-      "id": 3,
+      "skill": 97,
       "firstName": "Lionel",
       "lastName": "Messi",
       "username": "LM",
       "birthday": "2021-06-20",
-      "status": "active"
+      "status": "active",
+      "password": "12345"
   },
   {
-      "skill": "86 points",
-      "fullName": "Rodrigo De Paul",
-      "id": 4,
+      "skill": 86,
       "firstName": "Rodrigo",
       "lastName": "De Paul",
       "username": "RDP",
       "birthday": "1991-03-13",
-      "status": "active"
+      "status": "active",
+      "password": "12345"
   },
   {
-      "skill": "50 points",
-      "fullName": "Franco Gonzalez",
-      "id": 2,
+      "skill": 50,
       "firstName": "Franco",
       "lastName": "Gonzalez",
       "username": "FG",
       "birthday": "2021-06-20",
-      "status": "active"
+      "status": "active",
+      "password": "12345"
   },
   {
-      "skill": "50 points",
-      "fullName": "Franco Etcheverri",
-      "id": 1,
+      "skill": 50,
       "firstName": "Franco",
       "lastName": "Etcheverri",
       "username": "FE",
       "birthday": "2021-06-19",
-      "status": "injured"
+      "status": "injured",
+      "password": "12345"
   },
   {
-      "skill": "51 points",
-      "fullName": "A 1",
-      "id": 5,
+      "skill": 51,
       "firstName": "A",
       "lastName": "1",
       "username": "A1",
       "birthday": "2021-06-20",
-      "status": "active"
+      "status": "active",
+      "password": "12345"
   },
   {
-      "skill": "52 points",
-      "fullName": "A 2",
-      "id": 6,
+      "skill": 52,
       "firstName": "A",
       "lastName": "2",
       "username": "A2",
       "birthday": "2021-06-20",
-      "status": "active"
+      "status": "active",
+      "password": "12345"
   },
   {
-      "skill": "53 points",
-      "fullName": "A 3",
-      "id": 7,
+      "skill": 53,
       "firstName": "A",
       "lastName": "3",
       "username": "A3",
       "birthday": "2021-06-20",
-      "status": "active"
+      "status": "active",
+      "password": "12345"
   },
   {
-      "skill": "54 points",
-      "fullName": "A 4",
-      "id": 8,
+      "skill": 54,
       "firstName": "A",
       "lastName": "4",
       "username": "A4",
       "birthday": "2021-06-20",
-      "status": "active"
+      "status": "active",
+      "password": "12345"
   },
   {
-      "skill": "55 points",
-      "fullName": "A 5",
-      "id": 9,
+      "skill": 55,
       "firstName": "A",
       "lastName": "5",
       "username": "A5",
       "birthday": "2021-06-20",
-      "status": "active"
+      "status": "active",
+      "password": "12345"
   },
   {
-      "skill": "56 points",
-      "fullName": "A 6",
-      "id": 10,
+      "skill": 56,
       "firstName": "A",
       "lastName": "6",
       "username": "A6",
       "birthday": "2021-06-20",
-      "status": "active"
+      "status": "active",
+      "password": "12345"
   },
   {
-      "skill": "57 points",
-      "fullName": "A 7",
-      "id": 11,
+      "skill": 57,
       "firstName": "A",
       "lastName": "7",
       "username": "A7",
       "birthday": "2021-06-20",
-      "status": "active"
+      "status": "active",
+      "password": "12345"
   },
   {
-      "skill": "58 points",
-      "fullName": "A 8",
-      "id": 12,
+      "skill": 58,
       "firstName": "A",
       "lastName": "8",
       "username": "A8",
       "birthday": "2021-06-20",
-      "status": "active"
+      "status": "active",
+      "password": "12345"
   },
   {
-      "skill": "59 points",
-      "fullName": "A 9",
-      "id": 13,
+      "skill": 59,
       "firstName": "A",
       "lastName": "9",
       "username": "A9",
       "birthday": "2021-06-20",
-      "status": "active"
+      "status": "active",
+      "password": "12345"
   },
   {
-      "skill": "85 points",
-      "fullName": "Pablo Aimar",
-      "id": 17,
+      "skill": 85,
       "firstName": "Pablo",
       "lastName": "Aimar",
       "username": "PA",
       "birthday": "2021-06-20",
-      "status": "retired"
+      "status": "retired",
+      "password": "12345"
   }
 ]

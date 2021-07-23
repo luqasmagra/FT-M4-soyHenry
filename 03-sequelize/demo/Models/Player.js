@@ -39,12 +39,12 @@ module.exports = sequelize => {
         }
       }
     },
-    // password: {
-    //   type: DataTypes.STRING,
-    //   set() {
-    //     this.setDataValue('password', (this.firstName + this.lastName).split('').sort(() => 0.5 - Math.random()).join(''));
-    //   }
-    // },
+    password: {
+      type: DataTypes.STRING,
+      set(value) {
+        this.setDataValue('password', (this.firstName + this.lastName + value).split('').sort(() => 0.5 - Math.random()).join(''));
+      }
+    },
     fullName: {
       type: DataTypes.VIRTUAL,
       get() {

@@ -1,12 +1,15 @@
 const express = require('express');
-const { db, Op, Player, Team } = require('./db.js');
+const morgan = require('morgan');
+const { db, Op, Player, Team, PlayerTeam } = require('./db.js');
 
 const server = express();
 
 server.use(express.json());
 
+server.use(morgan('dev'));
+
 server.post('/players', async (req, res) => {
-  const { firstName, lastName, username, birthday, status, skill } = req.body;
+  const { firstName, lastName, username, birthday, status, skill, password } = req.body;
   try {
     const newPlayer = await Player.create({
       firstName,
@@ -14,12 +17,17 @@ server.post('/players', async (req, res) => {
       username,
       birthday,
       status,
-      skill
+      skill,
+      password
     });
     res.json(newPlayer);
   } catch (error) {
     res.send(error);
   }
+});
+
+server.post('/players/bulk', async (req, res) => {
+  res.json(await Player.bulkCreate(req.body));
 });
 
 server.get('/players', async (req, res) => {
@@ -192,6 +200,45 @@ server.post('/teams', async (req, res) => {
     res.send(error);
   }
 });
+
+server.post('/teams/bulk', async (req, res) => {
+  res.json(await Team.bulkCreate(req.body))
+});
+
+server.delete('/clear/:model', async (req, res) => {
+  const { model } = req.params;
+  if(model === 'player') 
+    return res.json(await Player.destroy({
+      truncate: true
+    }))
+  
+  if(model === 'team') 
+    return res.json(await Team.destroy({
+      truncate: true
+    }))
+
+  if(model === 'relation') 
+    return res.json(await PlayerTeam.destroy({
+      truncate: true
+    }))
+
+  res.send('Worng model name');
+});
+
+server.put('/transfer', async (req, res) => {
+  const { idPlayer, codeTeam } = req.body;
+  const player = await Player.findByPk(idPlayer);
+  res.json(await player.addTeam(codeTeam));
+});
+
+server.put('/multipletransfer', async (req, res) => {
+  const { override } = req.query;
+  const { idPlayer, codeTeams } = req.body;
+  const player = await Player.findByPk(idPlayer);
+  if(override) return res.json(await player.setTeams(codeTeams))
+  res.json(await player.addTeams(codeTeams));
+});
+
 
 server.get('/', (req, res) => {
   res.send('DEMO Sequelize with Express');
