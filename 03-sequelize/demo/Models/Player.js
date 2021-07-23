@@ -21,7 +21,11 @@ module.exports = sequelize => {
       type: DataTypes.ENUM('active', 'injured', 'retired')
     },
     skill: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      get() {
+        // return this.skill + ' points'; // Wrong!
+        return this.getDataValue('skill') + ' points';
+      }
     }
   }, {
     // timestamps: false

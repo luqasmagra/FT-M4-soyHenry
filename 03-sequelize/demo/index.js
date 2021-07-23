@@ -65,6 +65,7 @@ server.get('/players/filters/or', async (req, res) => {
 server.get('/players/id/:id', async (req, res) => {
   const { id } = req.params;
   const player = await Player.findByPk(id);
+  // console.log('Skill: ', player.skill); // Getter
   res.json(player || 'Player not found');
 });
 
