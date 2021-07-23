@@ -239,6 +239,46 @@ server.put('/multipletransfer', async (req, res) => {
   res.json(await player.addTeams(codeTeams));
 });
 
+server.get('/mixins', async (req, res) => {
+  const { idPlayer, codeTeam } = req.body;
+  console.log('----- PLAYER -----');
+  const player = await Player.findByPk(idPlayer);
+
+  const teams = await player.getTeams();
+  console.log('TEAMS: ', teams.map(t => t.toJSON()));
+
+  const teamsCount = await player.countTeams();
+  console.log('TEAMS COUNT: ', teamsCount);
+
+  const team = await Team.findByPk(codeTeam);
+  const playedInTeam = await player.hasTeam(codeTeam);
+  console.log(`Played in team ${team.name}: ${playedInTeam}`)
+
+  console.log('----- PLAYER -----');
+  const players = await team.getPlayers();
+  console.log('PLAYERS: ', players.map(p => p.toJSON()));
+
+  res.sendStatus(200);
+});
+
+server.get('/eagerloading', async (req, res) => {
+  // const allData = await Player.findAll({
+  //   include: Team
+  // });
+
+  const allData = await Player.findAll({
+    include: [{
+      model: Team,
+      attributes: ['name'],
+      through: {
+        attributes: []
+      }
+    }]
+  });
+
+  res.json(allData);
+});
+
 
 server.get('/', (req, res) => {
   res.send('DEMO Sequelize with Express');
