@@ -77,6 +77,14 @@
   margin-bottom: 1rem;
 }
 
+.lesson h2#homework {
+  display: inline-block;
+  font-family: 'Avenir-Black';
+  font-size: 48px;
+  line-height: 66px;
+  color: #1fa32a;
+}
+
 .lesson h3 {
   font-family: 'Avenir-Black';
   font-weight: 900;

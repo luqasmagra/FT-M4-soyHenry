@@ -33,7 +33,7 @@ Todas utilizan el lenguaje SQL, asi que son muy parecidas, el 80% de las cosas s
 
 > :pineapple: Para instalar Postgre sigan las instrucciones para su sistema operativo [acá](https://www.postgresql.org/download/).
 
-### SQL
+## SQL
 
 Como dijimos, vamos a interactuar con la base de datos a través de SQL. Este es un lenguaje especialmente diseñado para hacer consultas a las bases de datos relacionales. SQL es el acrónimo de Structured Query Language y es un standart mantenido por el ANSI (American National Standards Institute).
 Usando SQL vamos a poder crear tablas, buscar datos, insertar filas, borrarlas, etc..
