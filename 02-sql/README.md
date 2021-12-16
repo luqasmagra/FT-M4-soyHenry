@@ -219,3 +219,7 @@ Según el tipo de union que queremos hacer vamos a usar alguno de estos tipos de
 ![JOINS](/_src/assets/02-sql/SQL_Joins.png)
 
 > Los joins pueden ser operaciones muy costosas, de hecho, las bases de datos no relacionales suelen ser tan performantes porque esquivan los JOINS, logran ser más rápidas, pero ocupando más espacio.
+
+## Homework
+
+Completa la tarea descrita en el archivo [README](https://github.com/soyHenry/FT-M4/tree/master/02-sql/homework)
