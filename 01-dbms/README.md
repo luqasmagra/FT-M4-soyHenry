@@ -1,27 +1,32 @@
-## Henry
+---
+title: DBMS
+permalink: "/DBMS/"
+feedbackID: 01-dbms
+eleventyNavigation:
+  key: DBMS
+  order: 1
+---
 
-<table width="100%" style='table-layout:fixed;'>
+<table class="hide" width="100%" style='table-layout:fixed;'>
   <tr>
-	  <td>
-	  	<a href="https://airtable.com/shrOlYwXwdTEsT4Cq?prefill_clase=01-dbms">
-			<img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
-			<br>
-			Hacé click acá para dejar tu feedback sobre esta clase.
-	  	</a>
-	  </td>
+   <td>
+    <a href="https://airtable.com/shrOlYwXwdTEsT4Cq?prefill_clase=01-dbms">
+   <img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
+   <br>
+   Hacé click acá para dejar tu feedback sobre esta clase.
+    </a>
+   </td>
               <td>
-	    <a href="https://quiz.soyhenry.com/evaluation/new/6076f533bbe844ed01c38129">
-	    	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/HSQuiz.svg/768px-HSQuiz.svg.png" width="100" height="100"/>
-	    	<br>
-	    	Hacé click acá completar el quiz teórico de esta lecture.
-	    </a>
-	 </td>
+     <a href="https://quiz.soyhenry.com/evaluation/new/6076f533bbe844ed01c38129">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/HSQuiz.svg/768px-HSQuiz.svg.png" width="100" height="100"/>
+      <br>
+      Hacé click acá completar el quiz teórico de esta lecture.
+     </a>
+  </td>
   </tr>
 </table>
 
- Henry
-
-## SQL
+# Bases de Datos
 
 ### Necesidad de una base datos
 
@@ -32,8 +37,7 @@ Otra solución, más escalable para lograr persistencia de datos es usar una _ba
 * __Base de datos__: Es una colección de datos de un mismo dominio y organizada sistemáticamente para su posterior uso. Esta organización, en general, está construida de tal manera que _modele_ el problema de la mejor forma.
 * __DBMS__ (Database Management System): es una aplicación que interactua con el usuario, otras aplicación y la base de datos misma, de tal forma que pueda definir, crear, borrar, modificar, consultar y administrar bases de datos y datos en sí.
 
-![DBMS](./img/Componentes_de_un_base_de_datos.jpg)
-
+![DBMS](/_src/assets/01-dbms/Componentes_de_un_base_de_datos.jpg)
 
 Lo que vamos a hacer entonces, es usar un _DBMS_ para que nos ayude a guardar los datos. Y como todo el mundo utiliza estas aplicaciones, ya hay escritas muchas librerías de nodejs para que nos sirven como interfaz y que son fáciles de usar.
 Como se imaginan hay muchos sabores de BDMS para elegir. Lo primero es elegir si queremos uno que sea relacional (SQL) o uno no relacional (noSQL). Ahora vamos a empezar a ver como guardar datos en una base de datos no relacional, en particular `MongoDB`.

@@ -1,6 +1,13 @@
-# Henry
+---
+title: Sequelize
+permalink: "/Sequelize/"
+feedbackID: 03-sequelize
+eleventyNavigation:
+  key: Sequelize
+  order: 4
+---
 
-<table width="100%" style='table-layout:fixed;'>
+<table class="hide" width="100%" style='table-layout:fixed;'>
   <tr>
 	  <td>
 	  	<a href="https://airtable.com/shrOlYwXwdTEsT4Cq?prefill_clase=03-sequelize">
@@ -19,12 +26,12 @@
   </tr>
 </table>
 
-## ORM
+# ORM
 
 Un problema con las bases de datos relacionales ( puede ser un gran problema en proyectos complejos ) es que las cosas que guardamos en ella no mapean uno a uno a los objetos que tenemos en nuestra aplicación. De hecho, es probable que en nuestra App tengamos la clase _persona_, pero dificilmente tengamos la clase _ciudad_ y que ambas estén relacionadas. Simplemente tendríamos una propiedad _ciudad_ dentro de _persona_.
 Por lo tanto vamos a necesitar alguna capa de abstracción que nos oculte la complejidad de las tablas y sus relaciones y nosotros sólo veamos objetos desde la app. Para eso existen los __ORM__ (Object relation mapping), que son librerías o frameworks que hacen este trabajo por nosotros. Sería lo mismo que `mongoose`, pero un poco al revés!
 
-### SEQUELIZE
+## SEQUELIZE
 
 Obviamente existen un montón de ORMs (de estos de verdad hay miles porque se vienen usando hace mucho). Nosotros vamos a utilizar `sequelize`, en particular. Este es un ORM para nodejs que soporta varios motores de bases de datos:
 
@@ -38,11 +45,11 @@ Por supuesto que ustedes deben probar y jugar con varios de ellos hasta que encu
 
 > Hay otras librerías que no llegan a ser ORMs pero nos ayudan a hacer queries a la base de datos, si les gusta tener el control al 100% de su base de datos le recomiendo probar con algunos de estos, por ejemplo: [MassiveJS](https://github.com/robconery/massive-js)
 
-#### Instalación
+### Instalación
 
 Como `sequelize` soporta varias bases de datos, vamos a necesitar primero instalar el módulo de `sequelize` per ser, y luego el módulo del conector a la base de datos que vayamos a usar. `sequelize` hace uso de estos últimos para conectarse a la base de datos.
 
-```
+```bash
 $ npm install --save sequelize
 
 # y uno de los siguientes
@@ -59,7 +66,7 @@ var Sequelize = require("sequelize"); //requerimos el modulo
 var sequelize = new Sequelize('postgres://user:pass@example.com:5432/dbname');
 ```
 
-#### Modelos
+### Modelos
 
 Sequelize es muy parecido a Mongoose, primero vamos a tener que definir un modelo (las constrains y tipos de datos puedem difereir, pero el concepto es el mismo), los modelos se definen de la forma: `sequelize.define('name', {attributes}, {options}).`, veamos un ejemplo:
 
@@ -87,7 +94,7 @@ A diferencia de Mongoose, con sequelize vamos a tener que preocuparnos un poco p
 
 > Fijense que en Sequelize para pasar un callback lo hacemos en la función `.then()`, eso es una promesa, por ahora usenlo como una callback normal, más adelante las veremos en detalle.
 
-### CRUD ( Create, Read, Update, Delete)
+## CRUD ( Create, Read, Update, Delete)
 
 Para insertar datos en la base de datos, vamos a usar la función [create()](http://sequelize.readthedocs.io/en/latest/api/model/#createvalues-options-promiseinstance), que báscicamente lo que hace es crear una nueva instacia del modelo y lo guarda en la base de datos:
 
@@ -115,7 +122,7 @@ user.save().then(function(user) {
 
 Para buscar registros usamos la función [find](http://sequelize.readthedocs.io/en/latest/api/model/#findalloptions-promisearrayinstance), que viene en distintos sabores: [`findAll()`](http://sequelize.readthedocs.io/en/latest/docs/models-usage/#findall-search-for-multiple-elements-in-the-database): Sirve para buscar múltiples registros, `findOne()`: sirve para buscar un sólo registro y `findByID()`: es igual a _findOne()_ pero podemos buscar sólo por el ID del registro.
 
-```javscript
+```js
 User.findAll({ where: ["id > ?", 25] }).then(function(users) {
   console.log(users)   //busca TODOS los usuarios
 });
@@ -131,6 +138,7 @@ User.findbyId(2).then(function(user) {
   console.log(user)   //El user con ID 2
 });
 ```
+
 > Las búsquedas pueden ser más complejas que en Mongo, por la naturaleza de las relaciones, por lo tanto es importante que leamos bien la [documentación](http://sequelize.readthedocs.io/en/latest/docs/models-usage/#data-retrieval-finders).
 
 Para modificar un registro, o varios, tenemos que pasarle los nuevos atributos que queremos modificar, y además una condición de búsqueda, en este caso voy a cambiarle el nombre a todos los registros que tengan `id` =1 (sólo puede haber uno :smile: ):
