@@ -160,3 +160,7 @@ User.destroy(
   { where: { id: [1,2,3,4] }
   });
 ```
+
+## Homework
+
+Completa la tarea descrita en el archivo [README](https://github.com/soyHenry/FT-M4/tree/master/03-sequelize/homework)

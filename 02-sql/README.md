@@ -216,7 +216,7 @@ Ahora sólo pedimos el nombre, apellido de las personas y el nombre de la ciudad
 
 Según el tipo de union que queremos hacer vamos a usar alguno de estos tipos de `JOINS`:
 
-![JOINS](/_src/assets/02-sql/SQL_Joins.png)
+![no-box](/_src/assets/02-sql/SQL_Joins.png)
 
 > Los joins pueden ser operaciones muy costosas, de hecho, las bases de datos no relacionales suelen ser tan performantes porque esquivan los JOINS, logran ser más rápidas, pero ocupando más espacio.
 

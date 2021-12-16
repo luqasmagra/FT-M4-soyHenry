@@ -152,3 +152,7 @@ app.post('/login',
   ```
 
 Pueden encontrar más información sobre Passport y sus estrategias en [passportjs.org](http://passportjs.org)
+
+## Homework
+
+Completa la tarea descrita en el archivo [README](https://github.com/soyHenry/FT-M4/tree/master/04-Authentication/homework)
