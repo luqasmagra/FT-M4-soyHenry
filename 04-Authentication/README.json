@@ -1,0 +1,10 @@
+{
+  "lessonTitle": "Authentication",
+  "permalink": "/Authentication/",
+  "feedbackID": "04-Authentication",
+  "homeworkUrl": "https://github.com/soyHenry/FT-M4/tree/master/04-Authentication/homework",
+  "eleventyNavigation": {
+    "key": "Authentication",
+    "order": 4
+  }
+}
