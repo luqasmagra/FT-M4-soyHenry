@@ -1,4 +1,5 @@
 {
+  "layout": "lesson",
   "lessonTitle": "Sequelize",
   "permalink": "/Sequelize/",
   "feedbackID": "03-sequelize",
