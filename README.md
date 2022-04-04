@@ -11,10 +11,12 @@
 #### Bases de Datos
 
 <div class="hide">
+
 - [DBMS](./01-dbms)
 - [SQL](./02-sql)
 - [ORM: Sequelize](./03-sequelize)
 - [Authentication](./04-Authentication)
+
 </div>
 
 ## Proceso de subida de homeworks
