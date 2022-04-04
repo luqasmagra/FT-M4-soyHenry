@@ -1,6 +1,6 @@
-# Henry
+![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 
-<table width="100%" style='table-layout:fixed;'>
+<table class="hide" width="100%" style='table-layout:fixed;'>
   <tr>
 	  <td>
 	  	<a href="https://airtable.com/shrOlYwXwdTEsT4Cq?prefill_clase=02-sql">
@@ -19,16 +19,14 @@
   </tr>
 </table>
 
-# Henry
-
-## SQL - Postgres
+# SQL - Postgres
 
 Como en todo en este mundo, hay muchas opciones de bases de datos SQL. De hecho las hay pagas y gratis. Podríamos usar: MySQL, ORACLE, IBM DB2, SQL server, access, etc.
 Todas utilizan el lenguaje SQL, asi que son muy parecidas, el 80% de las cosas se puede hacer con cualquier motor. Nosotros vamos a ver en nuestro ejemplo `PostgreSQL`, que es una motor gratis de código abierto que tiene una comunidad muy activa. De hecho, postgre logra sacar funcionalidades antes que los motores pagos!
 
 > :pineapple: Para instalar Postgre sigan las instrucciones para su sistema operativo [acá](https://www.postgresql.org/download/).
 
-### SQL
+## SQL
 
 Como dijimos, vamos a interactuar con la base de datos a través de SQL. Este es un lenguaje especialmente diseñado para hacer consultas a las bases de datos relacionales. SQL es el acrónimo de Structured Query Language y es un standart mantenido por el ANSI (American National Standards Institute).
 Usando SQL vamos a poder crear tablas, buscar datos, insertar filas, borrarlas, etc..
@@ -47,7 +45,7 @@ Una vez ejecutado el comando vamos a ver listada la nueva base de datos, yo esto
 
 Ahora vamos a crear una tabla. Usamos el statement `CREATE TABLE` que tiene la siguiente forma:
 
-```
+```sql
 CREATE TABLE table_name
 (
 column_name1 data_type(size),
@@ -86,6 +84,7 @@ Para insertar datos vamos a usar el statement `INSERT INTO`:
 INSERT INTO table_name (column1,column2,column3,...)
 VALUES (value1,value2,value3,...);
 ```
+
 Insertemos tres ciudades:
 
 ```sql
@@ -122,7 +121,7 @@ Ahora tenemos tablas con datos, pero cómo los consultamos?
 
 Para recuperar datos usamos el statement `SELECT` de esta forma:
 
-```
+```sql
 SELECT column_name,column_name
 FROM table_name;
 ```
@@ -210,6 +209,10 @@ Ahora sólo pedimos el nombre, apellido de las personas y el nombre de la ciudad
 
 Según el tipo de union que queremos hacer vamos a usar alguno de estos tipos de `JOINS`:
 
-![JOINS](./img/SQL_Joins.png)
+![no-box](/_src/assets/02-sql/SQL_Joins.png)
 
 > Los joins pueden ser operaciones muy costosas, de hecho, las bases de datos no relacionales suelen ser tan performantes porque esquivan los JOINS, logran ser más rápidas, pero ocupando más espacio.
+
+## Homework
+
+Completa la tarea descrita en el archivo [README](https://github.com/soyHenry/FT-M4/tree/master/02-sql/homework)
