@@ -4,10 +4,10 @@
 
 En esta homework se pondrán a prueba las conocimientos básicos de autenticación mediante la implementación de un servidor que contendrá solamente cuatro pantallas:
 
-  * Inicio
-  * Login
-  * Registro
-  * Home
+* Inicio
+* Login
+* Registro
+* Home
 
 ## Configuración inicial
 

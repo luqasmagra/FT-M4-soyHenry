@@ -22,6 +22,7 @@ Ahora editá el contenido de ese archivo para que quede como lo siguiente:
 .mode column
 .timer o
 ```
+
 Estos ajustes van a hacer que el output de SQLite sea un poco más amigable.
 
 ### Creando una Base de Datos
@@ -29,7 +30,7 @@ Estos ajustes van a hacer que el output de SQLite sea un poco más amigable.
 Ahora vamos a crear una Base da Datos!
 Para eso nos ubiquemos en un directorio donde quieras guardar el archivo de la base de datos con `cd`.
 
-Bien, ahora dentro del directorio vamos a crear la base de datos propiamente dicha con el comando: 
+Bien, ahora dentro del directorio vamos a crear la base de datos propiamente dicha con el comando:
 
 ` $ sqlite3 imdb_test.sqlite.db `
 
