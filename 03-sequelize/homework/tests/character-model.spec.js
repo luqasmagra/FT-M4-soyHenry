@@ -62,6 +62,12 @@ describe('Character Model', () => {
     });
   
     xit('should create the Character if all required properties are ok', async () => {
+      // Lógica para generar un ISO string con la hora local en vez de UTC
+      const date = new Date();
+      const localTimezone = date.getTimezoneOffset() * 60 * 1000;
+      let localTime = date - localTimezone;
+      localTime = new Date(localTime);
+
       const character = await Character.create({
         code: 'FRAN',
         name: 'Franco',
@@ -74,7 +80,7 @@ describe('Character Model', () => {
         hp: 100.0,
         mana: 150.0,
         age: null,
-        date_added: new Date().toISOString().split('T')[0],
+        date_added: localTime.toISOString().split('T')[0],
         race: 'Other'
       });
     });
@@ -82,6 +88,12 @@ describe('Character Model', () => {
     xit('should not create two Characters with the same name', async () => {
       expect.assertions(2);
       try {
+        // Lógica para generar un ISO string con la hora local en vez de UTC
+        const date = new Date();
+        const localTimezone = date.getTimezoneOffset() * 60 * 1000;
+        let localTime = date - localTimezone;
+        localTime = new Date(localTime);
+
         const characterOne = await Character.create({code: 'ONE', name: 'First', hp: 100.0, mana: 150.0})
         expect(characterOne.toJSON()).toEqual({
           code: 'ONE',
@@ -89,7 +101,7 @@ describe('Character Model', () => {
           hp: 100.0,
           mana: 150.0,
           age: null,
-          date_added: new Date().toISOString().split('T')[0],
+          date_added: localTime.toISOString().split('T')[0],
           race: 'Other'
         });
         await Character.create({code: 'TWO', name: 'First', hp: 10.0, mana: 15.0});

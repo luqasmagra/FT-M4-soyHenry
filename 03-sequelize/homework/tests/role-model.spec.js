@@ -23,6 +23,19 @@ describe('Role Model', () => {
       expect(role.toJSON()).toHaveProperty('name','Tank');
       expect(role.toJSON()).toHaveProperty('description','Big amount of HP needed to withstands the attacks');
     });
+    xit('should not create two Roles with the same name', async () => {
+      expect.assertions(2);
+      try {
+        const firstRole = await Role.create({name:'Support', description: 'foo'});
+        expect(firstRole.toJSON()).toEqual({
+          name: 'Support',
+          description: 'Great at assisting allies from safety'
+        });
+        await Role.create({name: 'Support', description: 'foo2'});
+      } catch (error) {
+        expect(error.message).toBeDefined();
+      }
+    })
   })
 
 
